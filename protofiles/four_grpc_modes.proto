@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+message Request{
+  string request_purpose = 1;
+}
+
+message Response{
+  string response = 1;
+}
+
+service FourModes{
+  rpc UnaryAPI(Request) returns (Response);
+  rpc ServerStreamingAPI(Request) returns (stream Response);
+  rpc ClientStreamingAPI(stream Request) returns (Response);
+  rpc BiDirectionalStreamingAPI(stream Request) returns (stream Response);
+}
